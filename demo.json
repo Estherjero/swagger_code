@@ -193,7 +193,8 @@
         "required": [
           "id",
           "title",
-          "userId"
+          "userId",
+          "category"
         ],
         "properties": {
           "id": {
@@ -205,13 +206,33 @@
             "description": "Title of the post"
           },
           "body": {
-            "type": "string",
-            "description": "Body of the post"
+            "$ref": "#/definitions/Category"
+          },
+          "category": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Category"
+            }
           },
           "userId": {
             "type": "integer",
             "description": "ID of the user who created the post"
           }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Category"
         }
       }
     }
